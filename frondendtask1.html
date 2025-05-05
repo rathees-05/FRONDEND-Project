@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        
+        const homeSection = document.getElementById('home');
+        const aboutSection = document.getElementById('about');
+        const contactSection = document.getElementById('contact');
+        const formSection = document.getElementById('form-section');
+
+
+        document.querySelector('nav a[href="index.html"]').addEventListener('click', () => {
+            showSection(homeSection);
+        });
+        document.querySelector('nav a[href="about.html"]').addEventListener('click', () => {
+            showSection(aboutSection);
+        });
+        document.querySelector('nav a[href="contact.html"]').addEventListener('click', () => {
+            showSection(contactSection);
+        });
+
+
+        function showSection(section) {
+            homeSection.style.display = 'none';
+            aboutSection.style.display = 'none';
+            contactSection.style.display = 'none';
+            formSection.style.display = 'block'; 
+            section.style.display = 'block';
+        }
+
+
+        
+        function validateForm() {
+            let isValid = true;
+
+
+           const name = document.getElementById('name').value;
+            if (name.trim() === "") {
+                document.getElementById('nameError').textContent = "Name is required.";
+                isValid = false;
+            } else {
+                document.getElementById('nameError').textContent = "";
+            }
+
+
+            
+            const email = document.getElementById('email').value;
+            if (email.trim() !== "") { 
+                if (!isValidEmail(email)) {
+                    document.getElementById('emailError').textContent = "Invalid email format.";
+                    isValid = false;
+                } else {
+                    document.getElementById('emailError').textContent = "";
+                }
+            } else {
+                document.getElementById('emailError').textContent = "";
+            }
+
+
+            
+            const password = document.getElementById('password').value;
+            if (password.length < 6) { 
+                document.getElementById('passwordError').textContent = "Password should be at least 6 characters.";
+                isValid = false;
+            } else {
+                document.getElementById('passwordError').textContent = "";
+            }
+
+
+              if (isValid) {
+                
+                document.getElementById('formMessage').textContent = name + ", your details have been accepted.";
+            } else {
+                document.getElementById('formMessage').textContent = ""; 
+            }
+        }
+
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                document.getElementById('phoneError').textContent = "Numbers only are allowed";
+                return false;
+            } else {
+                document.getElementById('phoneError').textContent = "";
+                return true;
+            }
+        }
+
+
+    </script>
+
+    <style>
+        
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        nav {
+            background-color:black;
+            color:white;
+            padding: 10px;
+        }
+
+            nav a {
+               
+                text-decoration: none;
+                color: white;
+            }
+         
+        #body {
+            background-image: url(images/34.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            
+        }
+        #form-section{
+            margin-left:450px;
+        }
+        section {
+            padding: 20px;
+        }
+       
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"] {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!--<h1 id="demo">Project Demo</h1>
+        <table id="nav">
+            <tr>
+                <td><a href="" >Home</a></td>
+
+                <td><a href="" style="margin-left:30px;"> Contact Us </a></td>
+
+                <td><a href="" style="margin-left:30px;"> About Me </a></td>
+            </tr>
+        </table>
+
+        <h2 id="regis">Registration Form</h2>
+        <br />
+        <table id="form" >
+            <tr>
+                <td>User Name: <input type="text" name="name" style="margin-left:65px;
+    "/></td>
+            </tr>
+
+            <tr>
+                <td>Password : <input type="text" name="password" style="margin-left:73px;"/></td>
+            </tr>
+
+            <tr>
+                <td>Confirm Password : <input type="text" name="cpassword"/></td>
+            </tr>
+            <tr>
+                <td>E-mail : <input type="email" name="email" style="margin-left:95px;"/></td>
+            </tr>
+            <tr>
+                <td>Mobile Number : <input type="number" name="number" style="margin-left:20px;"/></td>
+            </tr>
+            <tr>
+                <td>Address : <input type="text" style="margin-left:82px;"/></td>
+            </tr>
+        </table>-->
+    <nav>
+        <h1 style="margin-left:560px; font-size:30px;">Project Demo</h1>
+        <a href="home.html"  style="margin-left:900px;">Home</a>
+        <a href="aboutus.html"> &nbsp; &nbsp; About Us</a>
+        <a href="https://www.linkedin.com/feed/"> &nbsp; &nbsp;Contact Us</a>
+    </nav>
+
+    <div id="body">
+
+        <section id="home">
+            <h1 style="font-size:35px; margin-left:420px; color:darkred;">Welcome to My Demo Page</h1>
+        </section>
+
+
+        <!--<section id="about" style="display: none;">
+            <h1>About Us</h1>
+            <img src="images/bestflight.jpeg" alt="About Us Image" width="200"> <p>This is a brief explanation about our company or website. You can replace this with your own content.</p>
+        </section>-->
+
+
+        <!--<section id="contact" style="display: none;">
+            <h1>Contact Us</h1>
+            <p>Contact us through our social media links:</p>
+            <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+        </section>-->
+
+
+        <section id="form-section">
+            <h2 style="padding-left:90px;">Registration Form</h2>
+            <form id="registrationForm" style="padding-left:90px;">
+                <label for="name">Name*:</label>
+                <input type="text" id="name" name="name" required>
+                <span id="nameError" class="error"></span><br><br>
+
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <span id="emailError" class="error"></span><br><br>
+
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <span id="passwordError" class="error"></span><br><br>
+
+
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" onkeypress="return isNumber(event)">
+                <span id="phoneError" class="error"></span><br><br>
+
+
+                <button type="button" onclick="validateForm()" style="margin-left:60px; background-color:powderblue; color:black; padding:5px; border-radius:4px;">Submit</button>
+            </form>
+            <div id="formMessage"></div>
+        </section>
+    </div>
+
+
+
+</body>
+</html>
